@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>MOY</Name>
+    <LastWriteTime>2025-01-22T07:50:02.9225613Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+    <Salt>CKux+vGn</Salt>
+    <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH/PAm+dQqUSgd5x9edz1bQAAAAACAAAAAAAQZgAAAAEAACAAAAApFzN7ojn1436r6E5i+R2h7w/1NHlfXX6AwjVtdZWJWgAAAAAOgAAAAAIAACAAAABYepUr/F5LRo1oKU0AiGsWW8IQY2eFFbJTSh+xRauohDAAAAA4QKhacZmDdJTLJZI6nUsYahzWIDdPrU62XKhmXRnkN4oB6MSnrb9y7EF/4oZLBnlAAAAAlpbgN8W+aAkl+TRykNuPnkqNRi9Ee6JZFoo8WpbtFIXHMXr+hXhri1GNl1OnIlH+29L6FgNMOmpFMtrzTy/d4Q==</LastKnownProtectedHashedPassword>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>MOY - Tarik Data Navision.dtsx</Name>
+      <LastWriteTime>2024-12-17T06:33:27.7164181Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+      <Salt>prLL9AFv</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH/PAm+dQqUSgd5x9edz1bQAAAAACAAAAAAAQZgAAAAEAACAAAABBH5sw9ea7EhXlB9skx/iieGyEFEGy4/3TliCAk/n2+AAAAAAOgAAAAAIAACAAAACvQX2bLib8oRGXPcXmb24G1qTFv+ivQUIZTF4zXCiLWzAAAABy5c6TUpiYuIM5rCLqv0T9ekwinavCCHjKZ2ScEkgmW8mN8w3aOsz6dt6Hf91Mu5dAAAAAP5GQjJpCEjONNoiIv2OZE0fFqgYVcfdbXTHxP0B5zR90YwOg+FScKnARj1y/PKBmZyqlnt21TpOdEsi3/4rCyw==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>MOY - Tarik Data Sales Navision.dtsx</Name>
+      <LastWriteTime>2025-02-12T07:00:54.855914Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+      <Salt>QcDFmIWq</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH/PAm+dQqUSgd5x9edz1bQAAAAACAAAAAAAQZgAAAAEAACAAAAD8kj3C398m1oELDwx+eaEviQ714iaBxV97UH60f66EBQAAAAAOgAAAAAIAACAAAABdJeNUDmS2TrUhGOthjqF1AmAxbTFpjxnl07IYnnz1cjAAAACR0lgI6N+b705izf7Kcf43xvEtfkr85wovgqorBRCIokH2X5916OXCCsybOUEm379AAAAAc1hoYpfIDwbDgNHESI8aSQzkqyvhRgQbCnKdN+NitlY4tTNDKcNFgj+xJy+xsWc+UtiEnnPhePWq4jgp5l1egA==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>MOY - Update Product Group.dtsx</Name>
+      <LastWriteTime>2025-01-22T09:06:14.6516191Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithPassword</LastKnownProtectionLevel>
+      <Salt>HJ2t2M4A</Salt>
+      <LastKnownProtectedHashedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAH/PAm+dQqUSgd5x9edz1bQAAAAACAAAAAAAQZgAAAAEAACAAAADagoetH2MLYOklJyEAq4FzNM+6/YhPc7n8moOFzoKeCQAAAAAOgAAAAAIAACAAAADI7FVvmpTOp8I+xHiMTo6yi1Km9+kg5+JIXMmo8K3vrjAAAADyoNpY5WCv6X9S3HAMgsa2KP36GTDxVOFQJ5v1BAtaPndUd6LAsYpuGBB06ebV+w9AAAAA8XtFxl58aFTqmd9qxAWLpY+BdOPosHdcdQ9MOmg8frxWnK9SGfvjKSaT7s3YUSK8OvXUeJR5iUiFm/REZf0y4g==</LastKnownProtectedHashedPassword>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>

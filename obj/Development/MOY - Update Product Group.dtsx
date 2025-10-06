@@ -1,0 +1,1070 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/22/2025 2:40:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="NBMIS-1-09"
+  DTS:CreatorName="DATASCRIP\zulfikar"
+  DTS:DTSID="{F55E32B2-9413-4D9B-ADE0-B004DFFD8E60}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{2F4B7174-27CD-409D-9C8A-8AC156E44BD6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[BISTAGING]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{66F01612-5D22-470A-ACA2-1231E1268ABB}"
+      DTS:ObjectName="BISTAGING">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=BISTAGING;Initial Catalog=BISTAGING;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{66F01612-5D22-470A-ACA2-1231E1268ABB}SPEED3.GCS_SISTEM;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MOY]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4E86D649-31B4-4322-8112-A1B9BF81E226}"
+      DTS:ObjectName="MOY">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SPEED4;Initial Catalog=MOY_V3;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{4E86D649-31B4-4322-8112-A1B9BF81E226}SPEED3.GCS_SISTEM;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\mst_product_group"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E2615640-EAF8-4CB0-B97A-E74F4364E353}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="mst_product_group"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\mst_product_group\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[mst_product_group]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[mst_product_group]) [refTable]
+where [refTable].[item_cat] = ? and [refTable].[prod_cat] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="item_cat" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="item_cat_des" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="prod_cat" dataType="DT_STR" length="25" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="prod_cat_des" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="first_sale" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="blocked" dataType="DT_UI1" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dept" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat]};#{Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\mst_product_group\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[MOY]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\mst_product_group\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\mst_product_group\Lookup.Inputs[Lookup Input].Columns[item_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="item_cat"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">item_cat</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\mst_product_group\Lookup.Inputs[Lookup Input].Columns[prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="prod_cat"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">prod_cat</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\mst_product_group\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\mst_product_group\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\mst_product_group\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\mst_product_group\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\mst_product_group\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\mst_product_group\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\mst_product_group\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\mst_product_group\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\mst_product_group\mst_product_group"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="mst_product_group"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[mst_product_group]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\mst_product_group\mst_product_group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[MOY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[item_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="item_cat"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[item_cat]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[item_cat_des]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="item_cat_des"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[item_cat_des]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat_des]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="prod_cat"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[prod_cat]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[prod_cat_des]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="prod_cat_des"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[prod_cat_des]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat_des]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[first_sale]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="first_sale"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[first_sale]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[first_sale]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[blocked]"
+                      cachedDataType="ui1"
+                      cachedName="blocked"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[blocked]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[blocked]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].Columns[dept]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="dept"
+                      externalMetadataColumnId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[dept]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[dept]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[item_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="item_cat" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[item_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="item_cat_des" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="prod_cat" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[prod_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="prod_cat_des" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[first_sale]"
+                      dataType="dbTimeStamp"
+                      name="first_sale" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[blocked]"
+                      dataType="ui1"
+                      name="blocked" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input].ExternalColumns[dept]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="dept" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\mst_product_group\mst_product_group.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\mst_product_group\mst_product_group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\mst_product_group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\mst_product_group\mst_product_group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\mst_product_group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\mst_product_group\Update mst_product_group"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Update mst_product_group"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">UPDATE	dbo.mst_product_group
+SET	item_cat_des = ?,
+	prod_cat_des = ?,
+	first_sale = ?,
+	blocked = ?
+WHERE	item_cat = ?
+AND	prod_cat = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\mst_product_group\Update mst_product_group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[MOY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].Columns[item_cat_des]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="item_cat_des"
+                      externalMetadataColumnId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat_des]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].Columns[prod_cat_des]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="prod_cat_des"
+                      externalMetadataColumnId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat_des]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].Columns[first_sale]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="first_sale"
+                      externalMetadataColumnId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[first_sale]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].Columns[blocked]"
+                      cachedDataType="ui1"
+                      cachedName="blocked"
+                      externalMetadataColumnId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[blocked]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].Columns[item_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="item_cat"
+                      externalMetadataColumnId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat]" />
+                    <inputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].Columns[prod_cat]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="30"
+                      cachedName="prod_cat"
+                      externalMetadataColumnId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="dbTimeStamp"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="ui1"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\mst_product_group\Update mst_product_group.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\mst_product_group\Update mst_product_group.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\Update mst_product_group.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\mst_product_group\Update mst_product_group.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\Update mst_product_group.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\mst_product_group\v_data_product_group_nav"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="v_data_product_group_nav"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_data_product_group_nav]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\mst_product_group\v_data_product_group_nav.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[BISTAGING]"
+                  connectionManagerRefId="Package.ConnectionManagers[BISTAGING]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[item_cat]"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat]"
+                      name="item_cat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[item_cat_des]"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[item_cat_des]"
+                      name="item_cat_des"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[prod_cat]"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat]"
+                      name="prod_cat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[prod_cat_des]"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[prod_cat_des]"
+                      name="prod_cat_des"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[first_sale]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[first_sale]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[first_sale]"
+                      name="first_sale"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[blocked]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[blocked]"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[blocked]"
+                      name="blocked"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[dept]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[dept]"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].Columns[dept]"
+                      name="dept"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[item_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="item_cat" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[item_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="item_cat_des" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="prod_cat" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[prod_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="prod_cat_des" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[first_sale]"
+                      dataType="dbTimeStamp"
+                      name="first_sale" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[blocked]"
+                      dataType="ui1"
+                      name="blocked" />
+                    <externalMetadataColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output].ExternalColumns[dept]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="dept" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[item_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[item_cat]"
+                      name="item_cat" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[item_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[item_cat_des]"
+                      name="item_cat_des" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[prod_cat]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[prod_cat]"
+                      name="prod_cat" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[prod_cat_des]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[prod_cat_des]"
+                      name="prod_cat_des" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[first_sale]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[first_sale]"
+                      name="first_sale" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[blocked]"
+                      dataType="ui1"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[blocked]"
+                      name="blocked" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[dept]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[dept]"
+                      name="dept" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\mst_product_group.Paths[Lookup Match Output]"
+              endId="Package\mst_product_group\Update mst_product_group.Inputs[OLE DB Command Input]"
+              name="Lookup Match Output"
+              startId="Package\mst_product_group\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\mst_product_group.Paths[Lookup No Match Output]"
+              endId="Package\mst_product_group\mst_product_group.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\mst_product_group\Lookup.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\mst_product_group.Paths[OLE DB Source Output]"
+              endId="Package\mst_product_group\Lookup.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\mst_product_group\v_data_product_group_nav.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\mst_product_group"
+          TopLeft="267.5,87.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\mst_product_group">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\mst_product_group\v_data_product_group_nav"
+          TopLeft="515.5,102.5" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\mst_product_group\Lookup"
+          TopLeft="562.5,212.5" />
+        <EdgeLayout
+          Id="Package\mst_product_group.Paths[OLE DB Source Output]"
+          TopLeft="619.25,144.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68"
+              Start="0,0"
+              End="0,60.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\mst_product_group\mst_product_group"
+          TopLeft="386.5,370.5" />
+        <EdgeLayout
+          Id="Package\mst_product_group.Paths[Lookup No Match Output]"
+          TopLeft="601.5,254.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-129.5,116"
+              Start="0,0"
+              End="-129.5,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.3717277486911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.3717277486911"
+                    Point2="0,47.3717277486911"
+                    Point3="-4,47.3717277486911" />
+                  <mssgle:LineSegment
+                    End="-125.5,47.3717277486911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-125.5,47.3717277486911"
+                    Point2="-129.5,47.3717277486911"
+                    Point3="-129.5,51.3717277486911" />
+                  <mssgle:LineSegment
+                    End="-129.5,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-120.55638671875,52.3717277486911,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="208,42"
+          Id="Package\mst_product_group\Update mst_product_group"
+          TopLeft="679.5,372.5" />
+        <EdgeLayout
+          Id="Package\mst_product_group.Paths[Lookup Match Output]"
+          TopLeft="636.5,254.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="147,118"
+              Start="0,0"
+              End="147,110.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.1884816753927" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.1884816753927"
+                    Point2="0,48.1884816753927"
+                    Point3="4,48.1884816753927" />
+                  <mssgle:LineSegment
+                    End="143,48.1884816753927" />
+                  <mssgle:CubicBezierSegment
+                    Point1="143,48.1884816753927"
+                    Point2="147,48.1884816753927"
+                    Point3="147,52.1884816753927" />
+                  <mssgle:LineSegment
+                    End="147,110.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25.30861328125,53.1884816753927,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\mst_product_group\v_data_product_group_nav">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\mst_product_group\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[mst_product_group]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\mst_product_group\mst_product_group">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

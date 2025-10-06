@@ -1,0 +1,2973 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2017 11:13:15 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ARI-MIS"
+  DTS:CreatorName="DATASCRIP\ari_ferdian"
+  DTS:DTSID="{1A1480F9-B2D4-4550-A944-75220869C68D}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5035.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="2"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{FF8197F2-25A5-4BDE-804E-C895231ABAA0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{53393FAC-FD0C-448C-99F4-BD41C10DD4F9}"
+      DTS:ObjectName="172.16.0.244.DTSNAV2015">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DTSNAVDB01;Initial Catalog=DTSNAV2015;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SPEED.DB_MOY]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+      DTS:ObjectName="SPEED.DB_MOY">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=SPEED;Initial Catalog=DB_MOY;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Copy Item Cat from NAV"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{93D91609-B431-424D-9D84-FEA6CCD3CE25}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy Item Cat from NAV"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Nav v_source_item_cat_for_moy"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_source_item_cat_for_moy]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="20"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="50"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Blocked]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Blocked]"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Blocked]"
+                      name="Blocked"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Dimension Value Type]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Dimension Value Type]"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Dimension Value Type]"
+                      name="Dimension Value Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Indentation]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Indentation]"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Indentation]"
+                      name="Indentation"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="20"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Blocked]"
+                      dataType="ui1"
+                      name="Blocked" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Dimension Value Type]"
+                      dataType="i4"
+                      name="Dimension Value Type" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].ExternalColumns[Indentation]"
+                      dataType="i4"
+                      name="Indentation" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Blocked]"
+                      dataType="ui1"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Blocked]"
+                      name="Blocked" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Dimension Value Type]"
+                      dataType="i4"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Dimension Value Type]"
+                      name="Dimension Value Type" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Indentation]"
+                      dataType="i4"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[Indentation]"
+                      name="Indentation" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SPEED , moy_item_cat"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[moy_item_cat]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].ExternalColumns[moy_item_cat_code]"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].ExternalColumns[moy_item_cat_desc]"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].Columns[Blocked]"
+                      cachedDataType="ui1"
+                      cachedName="Blocked"
+                      externalMetadataColumnId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].ExternalColumns[moy_item_cat_blocked]"
+                      lineageId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output].Columns[Blocked]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].ExternalColumns[moy_item_cat_code]"
+                      dataType="wstr"
+                      length="30"
+                      name="moy_item_cat_code" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].ExternalColumns[moy_item_cat_desc]"
+                      dataType="wstr"
+                      length="50"
+                      name="moy_item_cat_desc" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input].ExternalColumns[moy_item_cat_blocked]"
+                      dataType="bool"
+                      name="moy_item_cat_blocked" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy Item Cat from NAV.Paths[OLE DB Source Output]"
+              endId="Package\Copy Item Cat from NAV\SPEED , moy_item_cat.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Copy Source Item from NAV"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{68C430AE-821A-4C91-9D86-AF7E47A50EB6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy Source Item from NAV"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy Source Item from NAV\Navision Source Item"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Navision Source Item"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_source_item_for_moy]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Source Item from NAV\Navision Source Item.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[thn]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[thn]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[thn]"
+                      name="thn"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[Item Category Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[Item Category Code]"
+                      length="10"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[Item Category Code]"
+                      name="Item Category Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[Product Group Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[Product Group Code]"
+                      length="10"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[Product Group Code]"
+                      name="Product Group Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_1]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_1]"
+                      name="qty_1"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_2]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_2]"
+                      name="qty_2"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_3]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_3]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_3]"
+                      name="qty_3"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_4]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_4]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_4]"
+                      name="qty_4"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_5]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_5]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_5]"
+                      name="qty_5"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_6]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_6]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_6]"
+                      name="qty_6"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_7]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_7]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_7]"
+                      name="qty_7"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_8]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_8]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_8]"
+                      name="qty_8"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_9]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_9]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_9]"
+                      name="qty_9"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_10]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_10]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_10]"
+                      name="qty_10"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_11]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_11]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_11]"
+                      name="qty_11"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_12]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_12]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_12]"
+                      name="qty_12"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[kw]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[kw]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[kw]"
+                      name="kw"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[thn]"
+                      dataType="i4"
+                      name="thn" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[Item Category Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item Category Code" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[Product Group Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Product Group Code" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_1]"
+                      dataType="numeric"
+                      name="qty_1"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_2]"
+                      dataType="numeric"
+                      name="qty_2"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_3]"
+                      dataType="numeric"
+                      name="qty_3"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_4]"
+                      dataType="numeric"
+                      name="qty_4"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_5]"
+                      dataType="numeric"
+                      name="qty_5"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_6]"
+                      dataType="numeric"
+                      name="qty_6"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_7]"
+                      dataType="numeric"
+                      name="qty_7"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_8]"
+                      dataType="numeric"
+                      name="qty_8"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_9]"
+                      dataType="numeric"
+                      name="qty_9"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_10]"
+                      dataType="numeric"
+                      name="qty_10"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_11]"
+                      dataType="numeric"
+                      name="qty_11"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[qty_12]"
+                      dataType="numeric"
+                      name="qty_12"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].ExternalColumns[kw]"
+                      dataType="i4"
+                      name="kw" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[thn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[thn]"
+                      name="thn" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[Item Category Code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[Item Category Code]"
+                      name="Item Category Code" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[Product Group Code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[Product Group Code]"
+                      name="Product Group Code" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[kw]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[kw]"
+                      name="kw" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_1]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_1]"
+                      name="qty_1"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_2]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_2]"
+                      name="qty_2"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_3]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_3]"
+                      name="qty_3"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_4]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_4]"
+                      name="qty_4"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_5]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_5]"
+                      name="qty_5"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_6]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_6]"
+                      name="qty_6"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_7]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_7]"
+                      name="qty_7"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_8]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_8]"
+                      name="qty_8"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_9]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_9]"
+                      name="qty_9"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_10]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_10]"
+                      name="qty_10"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_11]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_11]"
+                      name="qty_11"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_12]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[qty_12]"
+                      name="qty_12"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copy Source Item from NAV\SPEED sitem MOY"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SPEED sitem MOY"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[moy_source_item_nav]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[thn]"
+                      cachedDataType="i4"
+                      cachedName="thn"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_thn]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[thn]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[Item Category Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Item Category Code"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_itemcat]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[Item Category Code]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[Product Group Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Product Group Code"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_subcat]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[Product Group Code]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_1]"
+                      cachedDataType="numeric"
+                      cachedName="qty_1"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty1]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_1]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_2]"
+                      cachedDataType="numeric"
+                      cachedName="qty_2"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty2]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_2]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_3]"
+                      cachedDataType="numeric"
+                      cachedName="qty_3"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty3]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_3]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_4]"
+                      cachedDataType="numeric"
+                      cachedName="qty_4"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty4]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_4]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_5]"
+                      cachedDataType="numeric"
+                      cachedName="qty_5"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty5]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_5]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_12]"
+                      cachedDataType="numeric"
+                      cachedName="qty_12"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty12]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_12]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_11]"
+                      cachedDataType="numeric"
+                      cachedName="qty_11"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty11]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_11]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_10]"
+                      cachedDataType="numeric"
+                      cachedName="qty_10"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty10]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_10]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_9]"
+                      cachedDataType="numeric"
+                      cachedName="qty_9"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty9]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_9]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_8]"
+                      cachedDataType="numeric"
+                      cachedName="qty_8"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty8]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_8]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_7]"
+                      cachedDataType="numeric"
+                      cachedName="qty_7"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty7]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_7]" />
+                    <inputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].Columns[qty_6]"
+                      cachedDataType="numeric"
+                      cachedName="qty_6"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty6]"
+                      lineageId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output].Columns[qty_6]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_thn]"
+                      dataType="i4"
+                      name="moy_sitem_thn" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_itemcat]"
+                      dataType="wstr"
+                      length="50"
+                      name="moy_sitem_itemcat" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_subcat]"
+                      dataType="wstr"
+                      length="50"
+                      name="moy_sitem_subcat" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty1]"
+                      dataType="r8"
+                      name="moy_sitem_qty1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty2]"
+                      dataType="r8"
+                      name="moy_sitem_qty2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty3]"
+                      dataType="r8"
+                      name="moy_sitem_qty3" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty4]"
+                      dataType="r8"
+                      name="moy_sitem_qty4" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty5]"
+                      dataType="r8"
+                      name="moy_sitem_qty5" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty6]"
+                      dataType="r8"
+                      name="moy_sitem_qty6" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty7]"
+                      dataType="r8"
+                      name="moy_sitem_qty7" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty8]"
+                      dataType="r8"
+                      name="moy_sitem_qty8" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty9]"
+                      dataType="r8"
+                      name="moy_sitem_qty9" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty10]"
+                      dataType="r8"
+                      name="moy_sitem_qty10" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty11]"
+                      dataType="r8"
+                      name="moy_sitem_qty11" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_qty12]"
+                      dataType="r8"
+                      name="moy_sitem_qty12" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_sitem_inserted]"
+                      dataType="dbTimeStamp"
+                      name="moy_sitem_inserted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Item from NAV\SPEED sitem MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Source Item from NAV\SPEED sitem MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Item from NAV\SPEED sitem MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy Source Item from NAV.Paths[OLE DB Source Output]"
+              endId="Package\Copy Source Item from NAV\SPEED sitem MOY.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Copy Source Item from NAV\Navision Source Item.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Copy Source Sales from NAV"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8C2EA147-18EC-446B-BA06-2BC48C731983}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Copy Source Sales from NAV"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Copy Source Sales from NAV\Navision Source Sales"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Navision Source Sales"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_source_sale_for_moy]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Source Sales from NAV\Navision Source Sales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q1]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q1]"
+                      name="sales_amt_q1"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q2]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q2]"
+                      name="sales_amt_q2"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q3]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q3]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q3]"
+                      name="sales_amt_q3"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q4]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q4]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q4]"
+                      name="sales_amt_q4"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q1]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q1]"
+                      name="disc_amt_q1"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q2]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q2]"
+                      name="disc_amt_q2"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q3]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q3]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q3]"
+                      name="disc_amt_q3"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q4]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q4]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q4]"
+                      name="disc_amt_q4"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q1]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q1]"
+                      name="inv_qty_q1"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q2]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q2]"
+                      name="inv_qty_q2"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q3]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q3]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q3]"
+                      name="inv_qty_q3"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q4]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q4]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q4]"
+                      name="inv_qty_q4"
+                      precision="38"
+                      scale="20"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[year]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[year]"
+                      name="year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[item_cat]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[item_cat]"
+                      length="10"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[item_cat]"
+                      name="item_cat"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[prod_cat]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[prod_cat]"
+                      length="10"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[prod_cat]"
+                      name="prod_cat"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q1]"
+                      dataType="numeric"
+                      name="sales_amt_q1"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q2]"
+                      dataType="numeric"
+                      name="sales_amt_q2"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q3]"
+                      dataType="numeric"
+                      name="sales_amt_q3"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[sales_amt_q4]"
+                      dataType="numeric"
+                      name="sales_amt_q4"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q1]"
+                      dataType="numeric"
+                      name="disc_amt_q1"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q2]"
+                      dataType="numeric"
+                      name="disc_amt_q2"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q3]"
+                      dataType="numeric"
+                      name="disc_amt_q3"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[disc_amt_q4]"
+                      dataType="numeric"
+                      name="disc_amt_q4"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q1]"
+                      dataType="numeric"
+                      name="inv_qty_q1"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q2]"
+                      dataType="numeric"
+                      name="inv_qty_q2"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q3]"
+                      dataType="numeric"
+                      name="inv_qty_q3"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[inv_qty_q4]"
+                      dataType="numeric"
+                      name="inv_qty_q4"
+                      precision="38"
+                      scale="20" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[year]"
+                      dataType="i4"
+                      name="year" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[item_cat]"
+                      dataType="wstr"
+                      length="10"
+                      name="item_cat" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].ExternalColumns[prod_cat]"
+                      dataType="wstr"
+                      length="10"
+                      name="prod_cat" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[year]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[year]"
+                      name="year" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[item_cat]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[item_cat]"
+                      name="item_cat" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[prod_cat]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[prod_cat]"
+                      name="prod_cat" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q1]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q1]"
+                      name="sales_amt_q1"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q2]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q2]"
+                      name="sales_amt_q2"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q3]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q3]"
+                      name="sales_amt_q3"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q4]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[sales_amt_q4]"
+                      name="sales_amt_q4"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q1]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q1]"
+                      name="disc_amt_q1"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q2]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q2]"
+                      name="disc_amt_q2"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q3]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q3]"
+                      name="disc_amt_q3"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q4]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[disc_amt_q4]"
+                      name="disc_amt_q4"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q1]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q1]"
+                      name="inv_qty_q1"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q2]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q2]"
+                      name="inv_qty_q2"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q3]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q3]"
+                      name="inv_qty_q3"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q4]"
+                      dataType="numeric"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[inv_qty_q4]"
+                      name="inv_qty_q4"
+                      precision="38"
+                      scale="20" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Copy Source Sales from NAV\SPEED ssale MOY"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SPEED ssale MOY"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[moy_source_sales_nav]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[sales_amt_q1]"
+                      cachedDataType="numeric"
+                      cachedName="sales_amt_q1"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q1]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q1]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[sales_amt_q2]"
+                      cachedDataType="numeric"
+                      cachedName="sales_amt_q2"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q2]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q2]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[sales_amt_q3]"
+                      cachedDataType="numeric"
+                      cachedName="sales_amt_q3"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q3]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q3]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[sales_amt_q4]"
+                      cachedDataType="numeric"
+                      cachedName="sales_amt_q4"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q4]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[sales_amt_q4]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[disc_amt_q1]"
+                      cachedDataType="numeric"
+                      cachedName="disc_amt_q1"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q1]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q1]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[disc_amt_q2]"
+                      cachedDataType="numeric"
+                      cachedName="disc_amt_q2"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q2]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q2]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[disc_amt_q3]"
+                      cachedDataType="numeric"
+                      cachedName="disc_amt_q3"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q3]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q3]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[disc_amt_q4]"
+                      cachedDataType="numeric"
+                      cachedName="disc_amt_q4"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q4]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[disc_amt_q4]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[inv_qty_q1]"
+                      cachedDataType="numeric"
+                      cachedName="inv_qty_q1"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q1]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q1]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[inv_qty_q2]"
+                      cachedDataType="numeric"
+                      cachedName="inv_qty_q2"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q2]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q2]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[inv_qty_q3]"
+                      cachedDataType="numeric"
+                      cachedName="inv_qty_q3"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q3]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q3]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[inv_qty_q4]"
+                      cachedDataType="numeric"
+                      cachedName="inv_qty_q4"
+                      cachedPrecision="38"
+                      cachedScale="20"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q4]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[inv_qty_q4]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[year]"
+                      cachedDataType="i4"
+                      cachedName="year"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_thn]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[year]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[item_cat]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="item_cat"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_itemcat]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[item_cat]" />
+                    <inputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].Columns[prod_cat]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="prod_cat"
+                      externalMetadataColumnId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_subcat]"
+                      lineageId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output].Columns[prod_cat]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_thn]"
+                      dataType="i4"
+                      name="moy_ssale_thn" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_itemcat]"
+                      dataType="wstr"
+                      length="50"
+                      name="moy_ssale_itemcat" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_subcat]"
+                      dataType="wstr"
+                      length="50"
+                      name="moy_ssale_subcat" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q1]"
+                      dataType="r8"
+                      name="moy_ssale_amt_q1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q2]"
+                      dataType="r8"
+                      name="moy_ssale_amt_q2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q3]"
+                      dataType="r8"
+                      name="moy_ssale_amt_q3" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_amt_q4]"
+                      dataType="r8"
+                      name="moy_ssale_amt_q4" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q1]"
+                      dataType="r8"
+                      name="moy_ssale_disc_amt_q1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q2]"
+                      dataType="r8"
+                      name="moy_ssale_disc_amt_q2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q3]"
+                      dataType="r8"
+                      name="moy_ssale_disc_amt_q3" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_disc_amt_q4]"
+                      dataType="r8"
+                      name="moy_ssale_disc_amt_q4" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q1]"
+                      dataType="r8"
+                      name="moy_ssale_inv_qty_q1" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q2]"
+                      dataType="r8"
+                      name="moy_ssale_inv_qty_q2" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q3]"
+                      dataType="r8"
+                      name="moy_ssale_inv_qty_q3" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inv_qty_q4]"
+                      dataType="r8"
+                      name="moy_ssale_inv_qty_q4" />
+                    <externalMetadataColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input].ExternalColumns[moy_ssale_inserted]"
+                      dataType="dbTimeStamp"
+                      name="moy_ssale_inserted" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Copy Source Sales from NAV.Paths[OLE DB Source Output]"
+              endId="Package\Copy Source Sales from NAV\SPEED ssale MOY.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Copy Source Sales from NAV\Navision Source Sales.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete moy_item_cat"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete moy_item_cat"
+      DTS:DTSID="{161B389A-E59C-459E-AE52-561C1FB6A224}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete moy_item_cat"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.moy_item_cat" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete moy_prod_group"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete moy_prod_group"
+      DTS:DTSID="{534A267E-DAA6-4FD0-8B75-3A8FE123E754}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete moy_prod_group"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.moy_prod_group" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete moy_source_item_nav"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete moy_source_item_nav"
+      DTS:DTSID="{16092280-7178-49B3-80C2-8817062FD770}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete moy_source_item_nav"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="delete from dbo.moy_source_item_nav where moy_sitem_thn=year(getdate())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete moy_source_sales_nav"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete moy_source_sales_nav"
+      DTS:DTSID="{55FCC5F1-02DE-47DE-9669-72B18D698E55}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete moy_source_sales_nav"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="delete from dbo.moy_source_sales_nav where moy_ssale_thn=year(getdate())" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Delete Temp"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Delete Temp"
+      DTS:DTSID="{05A36EE4-F3CA-45E5-B3F1-C03076301832}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete Temp"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="truncate table moy_prod_group_temp" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insert Data Product Group"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Insert Data Product Group"
+      DTS:DTSID="{A21AAB40-5BB0-40C2-820A-7B20E7E7A2D6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert Data Product Group"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="3">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{A2BD0B0A-6D1B-4C80-B8DB-D25612EDEA63}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="exec sp_insert_data_prod_moy_all" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Insert ke Temp SPEED"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5A6D2ED7-9EC3-4C87-BF23-F5DD6A62F44E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Insert ke Temp SPEED"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="NAV, v_source_item_prod_group_moy"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[v_source_item_prod_group_moy]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.0.244.DTSNAV2015]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Item Category Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Item Category Code]"
+                      length="10"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Item Category Code]"
+                      name="Item Category Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      length="10"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Code]"
+                      name="Code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      length="50"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[first_sell]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[first_sell]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[first_sell]"
+                      name="first_sell"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Blocked]"
+                      dataType="ui1"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Blocked]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Blocked]"
+                      name="Blocked"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Item Category Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Item Category Code" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Code]"
+                      dataType="wstr"
+                      length="10"
+                      name="Code" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="50"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[first_sell]"
+                      dataType="dbTimeStamp"
+                      name="first_sell" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].ExternalColumns[Blocked]"
+                      dataType="ui1"
+                      name="Blocked" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Item Category Code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Item Category Code]"
+                      name="Item Category Code" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Code]"
+                      name="Code" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[first_sell]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[first_sell]"
+                      name="first_sell" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Blocked]"
+                      dataType="ui1"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[Blocked]"
+                      name="Blocked" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="SPEED,moy_prod_group"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[moy_prod_group_temp]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  connectionManagerRefId="Package.ConnectionManagers[SPEED.DB_MOY]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].Columns[Item Category Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Item Category Code"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_item_cat_code]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Item Category Code]" />
+                    <inputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].Columns[Code]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Code"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_code]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Code]" />
+                    <inputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].Columns[first_sell]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="first_sell"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_first_sell]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[first_sell]" />
+                    <inputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].Columns[Blocked]"
+                      cachedDataType="ui1"
+                      cachedName="Blocked"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_blocked]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Blocked]" />
+                    <inputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_desc]"
+                      lineageId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output].Columns[Description]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_item_cat_code]"
+                      dataType="wstr"
+                      length="30"
+                      name="moy_prodt_item_cat_code" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_code]"
+                      dataType="wstr"
+                      length="50"
+                      name="moy_prodt_code" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_desc]"
+                      dataType="wstr"
+                      length="150"
+                      name="moy_prodt_desc" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_first_sell]"
+                      dataType="dbDate"
+                      name="moy_prodt_first_sell" />
+                    <externalMetadataColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input].ExternalColumns[moy_prodt_blocked]"
+                      dataType="bool"
+                      name="moy_prodt_blocked" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Insert ke Temp SPEED.Paths[OLE DB Source Output]"
+              endId="Package\Insert ke Temp SPEED\SPEED,moy_prod_group.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7688EDCF-106F-4C3C-BD48-D4B93E6B0268}"
+      DTS:From="Package\Delete moy_source_item_nav"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Copy Source Item from NAV" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B205C936-EE2F-4454-B4ED-B711F6028970}"
+      DTS:From="Package\Delete moy_source_sales_nav"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Copy Source Sales from NAV" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1588E717-35DF-4B6A-89F4-57F0DB17DC51}"
+      DTS:From="Package\Delete moy_item_cat"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Copy Item Cat from NAV" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{93EB15EB-0167-4B61-9919-E9BED830C4AB}"
+      DTS:From="Package\Insert ke Temp SPEED"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Delete moy_prod_group" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{CD62D9C8-7B1C-4C50-9CF1-5956CE3EEC69}"
+      DTS:From="Package\Delete moy_prod_group"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Insert Data Product Group" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{2858283A-C6FF-4D29-93D1-089FBBF9C7D6}"
+      DTS:From="Package\Delete Temp"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\Insert ke Temp SPEED" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="195,42"
+          Id="Package\Copy Item Cat from NAV"
+          TopLeft="129,273" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Copy Source Item from NAV"
+          TopLeft="93,121" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Copy Source Sales from NAV"
+          TopLeft="411,120" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Delete moy_item_cat"
+          TopLeft="98,199" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Delete moy_prod_group"
+          TopLeft="695,268" />
+        <NodeLayout
+          Size="163,55"
+          Id="Package\Delete moy_source_item_nav"
+          TopLeft="102,9" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\Delete moy_source_sales_nav"
+          TopLeft="421,16" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Delete Temp"
+          TopLeft="470,191" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Insert Data Product Group"
+          TopLeft="946,272" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Insert ke Temp SPEED"
+          TopLeft="477,269" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="183.5,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.5,57"
+              Start="0,0"
+              End="15.5,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="11.5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.5,28.5"
+                    Point2="15.5,28.5"
+                    Point3="15.5,32.5" />
+                  <mssgle:LineSegment
+                    End="15.5,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="531.5,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.5,62"
+              Start="0,0"
+              End="-13.5,54.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27"
+                    Point2="0,31"
+                    Point3="-4,31" />
+                  <mssgle:LineSegment
+                    End="-9.5,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.5,31"
+                    Point2="-13.5,31"
+                    Point3="-13.5,35" />
+                  <mssgle:LineSegment
+                    End="-13.5,54.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="205.5,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21,32"
+              Start="0,0"
+              End="21,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12"
+                    Point2="0,16"
+                    Point3="4,16" />
+                  <mssgle:LineSegment
+                    End="17,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17,16"
+                    Point2="21,16"
+                    Point3="21,20" />
+                  <mssgle:LineSegment
+                    End="21,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="662,289.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33,0"
+              Start="0,0"
+              End="25.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="25.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="888,291">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,0"
+              Start="0,0"
+              End="50.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="551.5,233">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18,36"
+              Start="0,0"
+              End="18,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="4,18" />
+                  <mssgle:LineSegment
+                    End="14,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14,18"
+                    Point2="18,18"
+                    Point3="18,22" />
+                  <mssgle:LineSegment
+                    End="18,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Copy Item Cat from NAV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\Copy Item Cat from NAV\SPEED , moy_item_cat"
+          TopLeft="180,175" />
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy"
+          TopLeft="139,56" />
+        <EdgeLayout
+          Id="Package\Copy Item Cat from NAV.Paths[OLE DB Source Output]"
+          TopLeft="255.5,98">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.5,77"
+              Start="0,0"
+              End="17.5,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="13.5,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.5,38.5"
+                    Point2="17.5,38.5"
+                    Point3="17.5,42.5" />
+                  <mssgle:LineSegment
+                    End="17.5,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Item Cat from NAV\Nav v_source_item_cat_for_moy">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Item Cat from NAV\SPEED , moy_item_cat">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Copy Source Item from NAV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Copy Source Item from NAV\SPEED sitem MOY"
+          TopLeft="281,134" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\Copy Source Item from NAV\Navision Source Item"
+          TopLeft="253,31" />
+        <EdgeLayout
+          Id="Package\Copy Source Item from NAV.Paths[OLE DB Source Output]"
+          TopLeft="342.5,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.5,61"
+              Start="0,0"
+              End="20.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="16.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.5,30.5"
+                    Point2="20.5,30.5"
+                    Point3="20.5,34.5" />
+                  <mssgle:LineSegment
+                    End="20.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Source Item from NAV\Navision Source Item">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Source Item from NAV\SPEED sitem MOY">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Copy Source Sales from NAV">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="162,42"
+          Id="Package\Copy Source Sales from NAV\SPEED ssale MOY"
+          TopLeft="311,184" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Copy Source Sales from NAV\Navision Source Sales"
+          TopLeft="262,23" />
+        <EdgeLayout
+          Id="Package\Copy Source Sales from NAV.Paths[OLE DB Source Output]"
+          TopLeft="352.5,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.5,119"
+              Start="0,0"
+              End="39.5,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.5"
+                    Point2="0,59.5"
+                    Point3="4,59.5" />
+                  <mssgle:LineSegment
+                    End="35.5,59.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.5,59.5"
+                    Point2="39.5,59.5"
+                    Point3="39.5,63.5" />
+                  <mssgle:LineSegment
+                    End="39.5,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Source Sales from NAV\Navision Source Sales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copy Source Sales from NAV\SPEED ssale MOY">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Insert ke Temp SPEED">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="194,42"
+          Id="Package\Insert ke Temp SPEED\SPEED,moy_prod_group"
+          TopLeft="244,170" />
+        <NodeLayout
+          Size="260,42"
+          Id="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy"
+          TopLeft="199,73" />
+        <EdgeLayout
+          Id="Package\Insert ke Temp SPEED.Paths[OLE DB Source Output]"
+          TopLeft="329,115">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12,55"
+              Start="0,0"
+              End="12,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="8,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8,27.5"
+                    Point2="12,27.5"
+                    Point3="12,31.5" />
+                  <mssgle:LineSegment
+                    End="12,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insert ke Temp SPEED\NAV, v_source_item_prod_group_moy">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Insert ke Temp SPEED\SPEED,moy_prod_group">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
